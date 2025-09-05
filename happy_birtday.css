@@ -1,0 +1,349 @@
+body {
+  position: relative;
+  background-color: #00b5ff;
+  position: relative;
+}
+
+canvas {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.birthday-text {
+  font-size: clamp(24px, 8vw, 60px); /* بيكبر ويصغر حسب حجم الشاشة */
+  text-align: center;
+  font-weight: bold;
+}
+#bmc-wbtn {
+  display: none;
+}
+.name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#cake {
+  display: block;
+  position: relative;
+  margin: -10em auto 0 auto;
+  z-index: 15;
+}
+
+/* ============================================== Candle
+      */
+
+.cake {
+  background: #ffffff;
+  border-radius: 10px;
+  position: absolute;
+  top: 228px;
+  left: 50%;
+  margin-left: -2.4px;
+  margin-top: -8.33333333px;
+  width: 5px;
+  height: 35px;
+  transform: translateY(-300px);
+  backface-visibility: hidden;
+  animation: in 500ms 6s ease-out forwards;
+  position: relative;
+}
+.cake:after,
+.cake:before {
+  background: rgba(255, 0, 0, 0.4);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.22222222px;
+}
+.cake:after {
+  top: 25%;
+  left: 0;
+}
+.cake:before {
+  top: 45%;
+  left: 0;
+}
+
+/* ============================================== Fire
+      */
+
+.fuego {
+  border-radius: 100%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin-left: -2.6px;
+  width: 6.66666667px;
+  height: 18px;
+}
+.fuego:nth-child(1) {
+  animation: fuego 2s 17.5s infinite;
+}
+.fuego:nth-child(2) {
+  animation: fuego 1.5s 17.5s infinite;
+}
+.fuego:nth-child(3) {
+  animation: fuego 1s 17.5s infinite;
+}
+.fuego:nth-child(4) {
+  animation: fuego 0.5s 17.5s infinite;
+}
+.fuego:nth-child(5) {
+  animation: fuego 0.2s 17.5s infinite;
+}
+
+.two {
+  position: absolute;
+  left: -45px;
+  font-size: 46px;
+  top: -20px;
+  font-weight: bold;
+  color: white;
+  font-family: sans-serif;
+  animation-delay: 14s;
+}
+.three {
+  position: absolute;
+  right: -45px;
+  font-size: 46px;
+  top: -20px;
+  color: white;
+  font-weight: bold;
+  animation-delay: 14s;
+  font-family: sans-serif;
+}
+.two::before,
+.three::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 11px;
+  background-color: white;
+  left: 49%;
+  bottom: -2px;
+  transform: translate(-50%, -50%);
+}
+/* ============================================== Animation Fire
+      */
+
+@keyframes fuego {
+  0%,
+  100% {
+    background: rgba(254, 248, 97, 0.5);
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, 0.2);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(255, 50, 0, 0.1);
+    box-shadow: 0 0 40px 20px rgba(248, 233, 209, 0.2);
+    transform: translateY(-20px) scale(0);
+  }
+}
+
+@keyframes in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+#cake {
+  position: absolute;
+  top: -500px; /* بداية الكيكة برا الشاشة فوق */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 500px;
+  animation: drop 2s ease-out forwards; /* تحريكها لتظهر في نص الشاشة */
+  animation-delay: 11s;
+  scale: 1.5;
+  left: 62%;
+}
+
+@keyframes drop {
+  to {
+    top: 50%; /* نص الشاشة */
+    transform: translate(-50%, -50%);
+  }
+}
+.cake {
+  position: absolute;
+  top: -900px; /* تبدأ برا الشاشة فوق */
+  transform: translateX(-50%);
+  animation: dropCake 2s ease-out forwards;
+  scale: 1.5;
+  left: 50%;
+  animation-delay: 15s;
+}
+
+@keyframes dropCake {
+  to {
+    top: 45%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.image {
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  animation: upBubb 2s ease-out forwards;
+  animation-delay: 11s;
+}
+.image img {
+  width: 100vw; /* مرن حسب الشاشة */
+  height: auto;
+}
+
+@keyframes upBubb {
+  to {
+    bottom: 10%;
+    opacity: 1;
+  }
+}
+
+.text {
+  content: "عمر العجائز الجديد";
+  position: absolute;
+  top: 17%;
+  left: 6%;
+  width: 370px;
+  height: 100px;
+  font-size: 48px;
+  z-index: 10;
+  color: white;
+  font-weight: bold;
+  opacity: 0;
+  font-family: system-ui;
+  animation: show 2s ease-out forwards;
+  animation-delay: 17s;
+  text-align: center;
+}
+@keyframes show {
+  to {
+    opacity: 0.7;
+  }
+}
+section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+}
+.box-text {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  margin-top: 51px;
+  border-radius: 15px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  height: 180px !important;
+}
+@media (max-width: 480px) {
+  .birthday-text {
+    font-size: clamp(18px, 6vw, 32px);
+  }
+  .text {
+    width: 90%;
+    font-size: 45px;
+    top: 20%;
+  }
+  .box-text {
+    font-size: 22px;
+    height: 180px;
+    height: auto;
+  }
+}
+
+.box-text img {
+  width: 30%;
+  position: absolute;
+  bottom: 2%;
+}
+.box-text .ri {
+  right: -1%;
+  bottom: -2%;
+}
+.box-text .lf {
+  left: -4%;
+}
+.bub {
+  bottom: -1% !important;
+  right: -3%;
+}
+
+.bub-gif {
+  width: 35% !important;
+  bottom: 10% !important;
+  right: -4%;
+}
+
+.night {
+  position: relative;
+  width: 91%;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  overflow: hidden;
+
+  /* خلفية ليلية */
+  background: linear-gradient(to top, #00111a 20%, #001f33 100%);
+}
+
+/* القمر */
+.night .moon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #fdfdfd;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #fff, 0 0 40px #ccc;
+}
+
+/* النجوم */
+.night .star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite alternate;
+}
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* الأرض */
+.night .ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #013220;
+  border-top-left-radius: 50% 20px;
+  border-top-right-radius: 50% 20px;
+}
